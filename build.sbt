@@ -1,7 +1,7 @@
 import Dependencies._
 
 lazy val todoFinagle = (project in file("."))
-  .aggregate(server, client, backend)
+  .aggregate(server, client, todoBackend)
 
 lazy val server = (project in file("server"))
   .settings(
@@ -30,7 +30,7 @@ lazy val client = (project in file("client"))
     )
   )
 
-lazy val backend = (project in file("backend"))
+lazy val todoBackend = (project in file("todoBackend"))
   .settings(
     inThisBuild(List(
       organization := "com.example",
@@ -44,3 +44,8 @@ lazy val backend = (project in file("backend"))
       "org.postgresql" %% "postgresql" % "42.1.4"
     )
   )
+lazy val schemaTodo = (project in file("schema/todo"))
+  .settings(
+    name := "schema-todo"
+  )
+  .enablePlugins(FlywayPlugin)

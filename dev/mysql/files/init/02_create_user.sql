@@ -1,0 +1,3 @@
+CREATE USER 'migrate'@'%' IDENTIFIED BY 'migratepasswd';
+GRANT ALL PRIVILEGES ON *.* TO 'migrate'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
