@@ -41,6 +41,7 @@ lazy val backend = (project in file("backend"))
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "com.twitter" %% "finagle-http" % "18.6.0",
-      "org.postgresql" %% "postgresql" % "42.1.4"
+      "org.postgresql" % "postgresql" % "42.1.4",
+      "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
     )
   )
