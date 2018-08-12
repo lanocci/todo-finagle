@@ -40,6 +40,9 @@ lazy val todoBackend = (project in file("todoBackend"))
     name := "todoBackend",
     libraryDependencies ++= Seq(
       scalaTest % Test,
+      circeCore,
+      circeGeneric,
+      circeParser,
       "com.twitter" %% "finagle-http" % "18.6.0",
       "org.postgresql" % "postgresql" % "42.1.4",
       "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
