@@ -12,7 +12,7 @@ object TodoBackend extends App {
     def apply(req:http.Request): Future[http.Response] = {
       Future.value {
         val response = http.Response(req.version, http.Status.Ok)
-        val todo = new Todo(1, "test")
+        val todo = new Todo(1, "test", false)
         val res = todo.asJson.noSpaces
         response.setContentString(res)
         response
@@ -25,4 +25,4 @@ object TodoBackend extends App {
   Await.ready(server)
 }
 
-case class Todo(id: Int, item: String)
+case class Todo(id: Int, title: String, completed: Boolean)
