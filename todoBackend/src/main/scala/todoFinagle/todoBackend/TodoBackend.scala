@@ -25,4 +25,3 @@ object TodoBackend extends App {
   val server = Http.serve(":8081", serviceWithTimeout)
   Await.ready(server)
 }
-

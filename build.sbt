@@ -16,8 +16,8 @@ lazy val todoBackend = (project in file("todoBackend"))
       circeCore,
       circeGeneric,
       circeParser,
+      mysql,
       "com.twitter" %% "finagle-http" % "18.6.0",
-      "org.postgresql" % "postgresql" % "42.1.4",
       "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
     )
   )

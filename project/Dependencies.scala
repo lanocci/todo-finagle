@@ -6,4 +6,5 @@ object Dependencies {
   lazy val circeCore = "io.circe" %% "circe-core" % circeVersion
   lazy val circeGeneric = "io.circe" %% "circe-generic" % circeVersion
   lazy val circeParser = "io.circe" %% "circe-parser" % circeVersion
+  lazy val mysql = "mysql" % "mysql-connector-java" % "5.1.24"
 }

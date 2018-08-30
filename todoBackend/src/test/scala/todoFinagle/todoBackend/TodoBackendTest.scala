@@ -1,6 +1,7 @@
 package todoFinagle.todoBackend
 
 import org.scalatest._
+import todoFinagle.model.Todo
 
 val todo1 = new Todo(1, "test1", false)
 val todo2 = new Todo(2, "test2", false)
