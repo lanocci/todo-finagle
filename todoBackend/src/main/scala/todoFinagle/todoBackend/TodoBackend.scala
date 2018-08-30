@@ -6,6 +6,7 @@ import io.circe._
 import io.circe.parser._
 import io.circe.syntax._
 import io.circe.generic.auto._
+import todoFinagle.model.Todo
 
 object TodoBackend extends App {
   val service = new Service[http.Request, http.Response] {
@@ -25,4 +26,3 @@ object TodoBackend extends App {
   Await.ready(server)
 }
 
-case class Todo(id: Int, title: String, completed: Boolean)
