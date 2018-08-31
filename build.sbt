@@ -10,15 +10,13 @@ lazy val todoBackend = (project in file("todoBackend"))
       scalaVersion := "2.12.5",
       version      := "0.1.0-SNAPSHOT"
     )),
-    name := "todoBackend",
+    name := "todo-backend",
     libraryDependencies ++= Seq(
       scalaTest % Test,
       circeCore,
       circeGeneric,
       circeParser,
-      mysql,
-      "com.twitter" %% "finagle-http" % "18.6.0",
-      "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
+      "com.twitter" %% "finagle-http" % "18.6.0"
     )
   )
   .dependsOn(
@@ -35,6 +33,21 @@ lazy val model = (project in file("model"))
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "com.twitter" %% "finagle-http" % "18.6.0",
+    )
+  )
+
+lazy val infraMysql = (project in file("infra/db/mysqlDb"))
+  .settings(
+    inThisBuild(List(
+      organization := "com.example",
+      scalaVersion := "2.12.5",
+      version      := "0.1.0-SNAPSHOT"
+    )),
+    name := "infra-mysql",
+    libraryDependencies ++= Seq(
+      scalaTest % Test,
+      mysql,
+      "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
     )
   )
 
