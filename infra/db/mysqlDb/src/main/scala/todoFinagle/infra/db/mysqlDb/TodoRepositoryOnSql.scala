@@ -1,3 +1,5 @@
+package todoFinagle.infra.db.mysqlDb
+
 import scalikejdbc._
 import scalikejdbc.config._
 
