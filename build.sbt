@@ -1,9 +1,9 @@
 import Dependencies._
 
 lazy val todoFinagle = (project in file("."))
-  .aggregate(todoBackend, model)
+  .aggregate(todobackend, model)
 
-lazy val todoBackend = (project in file("todoBackend"))
+lazy val todobackend = (project in file("todobackend"))
   .settings(
     inThisBuild(List(
       organization := "com.example",

@@ -1,4 +1,4 @@
-package todoFinagle.todoBackend
+package todofinagle.todobackend
 
 import org.scalatest._
 import todoFinagle.model.Todo

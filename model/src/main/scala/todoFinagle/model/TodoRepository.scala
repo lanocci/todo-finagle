@@ -1,4 +1,4 @@
-package todoFinagle.model
+package todofinagle.model
 
 trait TodoReadable {
   def resolve(ids: Iterable[TodoId]): Itrerable[Todo]

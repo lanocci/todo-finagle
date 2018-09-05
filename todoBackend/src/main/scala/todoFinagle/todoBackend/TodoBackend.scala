@@ -1,4 +1,4 @@
-package todoFinagle.todoBackend
+package todofinagle.todobackend
 
 import com.twitter.finagle.{Http, Service, http}
 import com.twitter.util.{Await, Duration, Future, JavaTimer}
