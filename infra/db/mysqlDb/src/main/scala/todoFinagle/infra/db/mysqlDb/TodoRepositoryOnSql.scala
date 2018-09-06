@@ -7,10 +7,12 @@ import todofinagle.model.TodoRepository
 // DB にアクセスして Todo のリストを返す実装
 
 class TodoRepositoryOnSql(db: DB) {
+
+  // これだとアプリケーション起動時のDBの状態をずっと維持しちゃうかも？？
   val allTodos = {
     DB readOnly {
       implicit session =>
-        sql"select * from todos".map(_.long(1)).list.apply()
+        sql"select * from todos".map(Todo(todo)).list.apply()
     }
   }
 }

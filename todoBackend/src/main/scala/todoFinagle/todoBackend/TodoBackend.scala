@@ -7,13 +7,15 @@ import io.circe.parser._
 import io.circe.syntax._
 import io.circe.generic.auto._
 import todoFinagle.model.Todo
+import todofinagle.infra.db.mysqlDb.TodoRepositoryOnSql
 
 object TodoBackend extends App {
   val service = new Service[http.Request, http.Response] {
     def apply(req:http.Request): Future[http.Response] = {
       Future.value {
         val response = http.Response(req.version, http.Status.Ok)
-        val todos = Seq(new Todo(1, "test", false), new Todo(2, "test2", true))
+//        val todos = Seq(new Todo(1, "test", false), new Todo(2, "test2", true))
+        val todos = TodoRepositoryOnSql.allTodos
         val res = todos.asJson.noSpaces
         response.setContentString(res)
         response
