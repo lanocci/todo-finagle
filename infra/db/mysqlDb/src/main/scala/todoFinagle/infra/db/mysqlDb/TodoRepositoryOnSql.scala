@@ -2,17 +2,17 @@ package todofinagle.infra.db.mysqlDb
 
 import scalikejdbc._
 import scalikejdbc.config._
-import todofinagle.model.TodoRepository
+import todofinagle.model.Todo
 
 // DB にアクセスして Todo のリストを返す実装
 
-class TodoRepositoryOnSql(db: DB) {
+class TodoRepositoryOnSql(implicit db: DB) {
 
   // これだとアプリケーション起動時のDBの状態をずっと維持しちゃうかも？？
   val allTodos = {
     DB readOnly {
       implicit session =>
-        sql"select * from todos".map(Todo(todo)).list.apply()
+        sql"select id, title, completed from todos".map(rs => Todo(rs.int("id"), rs.string("title"), rs.boolean("completed"))).list.apply()
     }
   }
 }

@@ -20,7 +20,8 @@ lazy val todobackend = (project in file("todobackend"))
     )
   )
   .dependsOn(
-    model
+    model,
+    infraMysql
   )
 lazy val model = (project in file("model"))
   .settings(
@@ -47,8 +48,12 @@ lazy val infraMysql = (project in file("infra/db/mysqlDb"))
     libraryDependencies ++= Seq(
       scalaTest % Test,
       mysql,
-      "org.scalikejdbc" %% "scalikejdbc" % "3.3.0"
+      "org.scalikejdbc" %% "scalikejdbc" % "3.3.0",
+      "org.scalikejdbc" %% "scalikejdbc-config" % "3.3.0"
     )
+  )
+  .dependsOn(
+    model
   )
 
 lazy val schemaTodo = (project in file("schema/todo"))

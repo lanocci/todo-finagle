@@ -6,7 +6,7 @@ import io.circe._
 import io.circe.parser._
 import io.circe.syntax._
 import io.circe.generic.auto._
-import todoFinagle.model.Todo
+import todofinagle.model.Todo
 import todofinagle.infra.db.mysqlDb.TodoRepositoryOnSql
 
 object TodoBackend extends App {
