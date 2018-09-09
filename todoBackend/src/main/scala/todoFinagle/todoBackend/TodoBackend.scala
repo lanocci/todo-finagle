@@ -15,7 +15,8 @@ object TodoBackend extends App {
       Future.value {
         val response = http.Response(req.version, http.Status.Ok)
 //        val todos = Seq(new Todo(1, "test", false), new Todo(2, "test2", true))
-        val todos = TodoRepositoryOnSql.allTodos
+        val todoRepo = new TodoRepositoryOnSql()
+        val todos = todoRepo.getAllTodos()
         val res = todos.asJson.noSpaces
         response.setContentString(res)
         response
