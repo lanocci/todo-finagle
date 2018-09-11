@@ -20,4 +20,13 @@ class TodoRepositoryOnSql() {
     DBs.close()
     return allTodos
   }
+
+  def create(todo: Todo) {
+    DBs.setupAll()
+    val id = DB autocommit { implicit s =>
+      val (title, completed) = (todo.title, todo.completed)
+      sql"insert into todos values (${title}, ${completed})".updateAndReturnGeneratedKey.apply()
+    }
+    DBs.close
+  }
 }
