@@ -14,7 +14,7 @@ class TodoRepositoryOnSql() {
     val allTodos = {
       DB readOnly {
         implicit session =>
-          sql"select id, title, completed from todos".map(rs => Todo(rs.int("id"), rs.string("title"), rs.boolean("completed"))).list.apply()
+          sql"select id, title, completed, user from todos".map(rs => Todo(rs.int("id"), rs.string("title"), rs.boolean("completed"), rs.int("user"))).list.apply()
       }
     }
     DBs.close()
@@ -24,8 +24,8 @@ class TodoRepositoryOnSql() {
   def create(todo: Todo) {
     DBs.setupAll()
     val id = DB autoCommit { implicit s =>
-      val (title, completed) = (todo.title, todo.completed)
-      sql"insert into todos values (${title}, ${completed})".updateAndReturnGeneratedKey.apply()
+      val (title, completed, user) = (todo.title, todo.completed, todo.user)
+      sql"insert into todos values (${title}, ${completed}, ${user})".updateAndReturnGeneratedKey.apply()
     }
     DBs.close()
   }
