@@ -11,31 +11,6 @@ import todofinagle.model.Todo
 import todofinagle.infra.db.mysqlDb.TodoRepositoryOnSql
 
 object TodoBackend extends App {
-  // val getAllTodosService = new Service[http.Request, http.Response] {
-  //   def apply(req: http.Request): Future[http.Response] = {
-  //     Future.value {
-  //       val response = http.Response(req.version, http.Status.Ok)
-  //       val todoRepo = new TodoRepositoryOnSql()
-  //       val todos = todoRepo.getAllTodos()
-  //       val res = todos.asJson.noSpaces
-  //       response.setContentString(res)
-  //       response
-  //     }
-  //   }
-  // }
-  // val addTodoService = new Service[http.Request, http.Response] {
-  //   def apply(req: http.Request): Future[http.Response] = {
-  //     Future.value {
-  //       val response = http.Response(req.version, http.Status.Ok)
-  //       val todoRepo = new TodoRepositoryOnSql()
-  //       todoRepo.create()
-  //       val todos = todoRepo.getAllTodos()
-  //       val res = todos.asJson.noSpaces
-  //       response.setContentString(res)
-  //       response
-  //     }
-  //   }
-  // }
   // val router = RoutingService.byPathObject[Request] {
   //   case Root / "todos" => getAllTodosService
   //   case Root / "todos"/ "create" => addTodoSerivce
@@ -46,10 +21,5 @@ object TodoBackend extends App {
   val timeoutFilter = new TimeoutFilter[http.Request, http.Response](Duration.fromNanoseconds(1), new JavaTimer(false))
   val serviceWithTimeout = timeoutFilter.andThen(todoService)
   val server = Http.serve(":8081", serviceWithTimeout)
-  // val server = ServerBuilder()
-  //   .codec(HTTP())
-  //   .bindTo(new InetSocketService(8080))
-  //   .name("example")
-  //   .build(service)
   Await.ready(server)
 }
