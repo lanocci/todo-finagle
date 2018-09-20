@@ -12,6 +12,7 @@ import todofinagle.model.Todo
 class PostService() extends Service[http.Request, http.Response] {
   override def apply(req: http.Request): Future[http.Response] = {
     val rawTodo = req.getContentString()
+    println(rawTodo)
     val todo: Either[Error, Todo] = decode[Todo](rawTodo)
     Future.value {
       val response = http.Response(req.version, http.Status.Ok)

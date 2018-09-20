@@ -19,7 +19,7 @@ object TodoBackend extends App {
   val todoService = new TodoService()
 
   val timeoutFilter = new TimeoutFilter[http.Request, http.Response](Duration.fromNanoseconds(1), new JavaTimer(false))
-  val serviceWithTimeout = timeoutFilter.andThen(todoService)
-  val server = Http.serve(":8081", serviceWithTimeout)
+  //val serviceWithTimeout = timeoutFilter.andThen(todoService)
+  val server = Http.serve(":8081", todoService)
   Await.ready(server)
 }
