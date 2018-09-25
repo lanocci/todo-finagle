@@ -3,10 +3,6 @@ package todofinagle.todobackend
 import java.util.UUID
 import com.twitter.finagle.{Http, Service, http}
 import com.twitter.util.{Await, Duration, Future, JavaTimer}
-import io.circe._
-import io.circe.parser._
-import io.circe.syntax._
-import io.circe.generic.auto._
 import todofinagle.model.Todo
 import todofinagle.infra.db.mysqlDb.TodoRepositoryOnSql
 
